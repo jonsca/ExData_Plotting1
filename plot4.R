@@ -12,20 +12,23 @@ plot4 = function(){
   df <- df[,-2]
   
   png('plot4.png',480,480)
-  par(mfrow = c(2,2))
-  plot(df[,1],df[,2],type="l",xlab = "",ylab ="Global Active Power (kilowatts)")
+  par(mfrow = c(2,2),mar=c(5,5,2,2))
+  plot(df$Date,df$Global_active_power,type="l",xlab = "",ylab ="Global Active Power (kilowatts)")
   
-  ##This plot seems to be in kWatts in the example, so multiply by 1000
-  plot(df[,1],df[,3]*1000,type = 'l',xlab="datetime",ylab = "voltage")
+  
+  plot(df$Date,df$Voltage,type = 'l',xlab="datetime",ylab = "Voltage",ylim=c(225,250))
   
   plot(df$Date,df$Sub_metering_1,type='l',ylab='',xlab='', ylim = c(0,40),yaxp = c(0,40,4),col='gray')
   par(new = TRUE)
   plot(df$Date,df$Sub_metering_2,type ='l',ylab='',xlab='',ylim = c(0,40),yaxp = c(0,40,4),col='red')
   par(new = TRUE)
-  plot(df$Date,df$Sub_metering_3, type = 'l',xlab='',ylab="Energy sub metering", ylim = c(0,40),yaxp = c(0,40,4),col='blue')
+  plot(df$Date,df$Sub_metering_3,type = 'l',xlab='',ylab="Energy sub metering", ylim = c(0,40),yaxp = c(0,40,4),col='blue')
+  legend(x="topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),lty=c(1,1,1),col=c('gray','red','blue'),bty='n',cex=0.5)
   
-  plot(df$Date,df$Global_reactive_power,type = 'l',xlab='datetime')
+  plot(df$Date,df$Global_reactive_power,type = 'l',xlab='datetime',ylab='Global_reactive_power')
   
   dev.off()
+  par(mfrow = c(1,1)) #reset the mode for further plotting
+  
   
 }

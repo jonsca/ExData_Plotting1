@@ -12,5 +12,10 @@ plot2 = function(){
   df$Date <- strptime(paste(df$Date, format(df$Time, nsmall=2)), format='%d/%m/%Y %H:%M:%S')
   df <- df[,-2]
   
-  plot(df[,1],df[,2])
+  png('plot2.png',480,480)
+  
+  plot(df[,1],df[,2],type="l",xlab = "",ylab ="Global Active Power (kilowatts)")
+
+  dev.off()
+  
 }
