@@ -18,6 +18,6 @@ par(new = TRUE)
 plot(df$Date,df$Sub_metering_2,type ='l',ylab='',xlab='',ylim = c(0,40),yaxp = c(0,40,4),col='red')
 par(new = TRUE)
 plot(df$Date,df$Sub_metering_3, type = 'l',xlab='',ylab="Energy sub metering", ylim = c(0,40),yaxp = c(0,40,4),col='blue')
-legend(x="topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), lty=c(1,1,1),col=c('gray','red','blue'),bty='n')
+legend(x="topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), lty=c(1,1,1),col=c('gray','red','blue'))
 dev.off()
 }
