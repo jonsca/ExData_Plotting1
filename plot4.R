@@ -11,12 +11,17 @@ plot4 = function(){
   df$Date <- strptime(paste(df$Date, format(df$Time, nsmall=2)), format='%d/%m/%Y %H:%M:%S')
   df <- df[,-2]
   
+  ymn <- min(df$Voltage)
+  ymx <- max(df$Voltage)
+  
   png('plot4.png',480,480)
   par(mfrow = c(2,2),mar=c(5,5,2,2))
   plot(df$Date,df$Global_active_power,type="l",xlab = "",ylab ="Global Active Power (kilowatts)")
   
   
-  plot(df$Date,df$Voltage,type = 'l',xlab="datetime",ylab = "Voltage",ylim=c(225,250))
+ 
+  
+  plot(df$Date,df$Voltage,type = 'l',xlab="datetime",ylab = "Voltage",ylim=c(ymn,ymx))
   
   plot(df$Date,df$Sub_metering_1,type='l',ylab='',xlab='', ylim = c(0,40),yaxp = c(0,40,4),col='gray')
   par(new = TRUE)
